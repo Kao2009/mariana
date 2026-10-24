@@ -328,7 +328,7 @@
                 slide.style.transform = 'translateX(' + (-size * counter) + 'px)';
             }
             function updateDots(){
-                dots.forEach(dot.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
                 dots[counter].classList.add('active');
             }
             function nextSlide(){
@@ -343,7 +343,7 @@
             }
             function prevSlide(){
                 if (counter <= 0){
-                    counter = images.lenght - 1;
+                    counter = images.length - 1;
                 }
                 else {
                     counter--;
@@ -353,7 +353,7 @@
             }
             // oklara tıklama //
             nextBtn.addEventListener('click', nextSlide);
-            prevBtn.addEventListener('click', prevBtn);
+            prevBtn.addEventListener('click', prevSlide);
             // hangi noktaysa o yöne//
             dots.forEach((dot, index) =>{
                 dot.addEventListener('click', () => {
