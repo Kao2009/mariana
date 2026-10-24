@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="tr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mariana Çukuru Keşif Günlüğü</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+        <style>
+            @keyframes okyanusAkintisi {
+                0% {
+                    background-position: 0% 50%;
+                }
+                50% {
+                    background-position: 100% 50%;
+                }
+                100% {
+                    background-position: 0% 50%;
+                }
+            }
+            /*Güneş ışığı hüzmelerinin süzülme animsayonu.*/
+            @keyframes isikHuzmeleri {
+                0% {
+                    transform: translateY(-20px) scale(1);
+                    opacity: 0.3;
+                }
+                50% {
+                    transform: translateY(10px) scale(1.05);
+                    opacity: 0.6;
+                }
+                100%{
+                    transform: translateY(-20px) scale(1);
+                    opacity: 0.3;
+                }
+            }
+
+            body {
+                font-family: 'Poppins', sans-serif;
+                position: relative;
+                overflow-x: hidden;
+                /*derin okyanus tonları*/
+                background: linear-gradient(-45deg, #02050b, #070e1c, #0b152e, #040914);
+                background-size: 400% 400%;
+                animation: okyanusAkintisi 20s ease infinite;
+
+                color: #ffffff;
+                text-align: center;
+                padding-top: 50px;
+                min-height: 100vh;
+                margin: 0;
+            }
+            /*Yukarıdan vuran güneş ışığı hüzmeleri katmanı */
+            body::before{
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                /*çizgisel opak gradinetlerle ışık huzmesi efekti veriyoruz. */
+                background: repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 80px,
+                    rgba(0, 210, 255, 0.03) 80px,
+                    rgba(0, 210, 255, 0.03) 120px
+                );
+                animation: isikHuzmeleri 8s ease-in-out infinite;
+                pointer-events: none; /*tıklamaları engellemesin diye*/
+            }
+            /*Büyük giriş bölümü tasarımı*/
+            .hero-section{
+                height: 70vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 0 20px;
+                position: relative;
+                z-index: 1;
+            }
+            .hero-section h1{
+                font-size: 48px;
+                font-weight: 600;
+                letter-spacing: 3px;
+                margin-bottom: 10px;
+                color: #ffffff;
+                text-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+             }
+             .hero-section p{
+                font-size: 16px;
+                color: #b0c4de;
+             }
+
+             /*tarihçe ve bilgi kutusu tasarımı*/
+             .history-section{
+                max-width: 800px;
+                margin: 0 auto 50px auto;
+                padding: 30px;
+                background-color: rgba(21, 34, 56,0.6);
+                border: 1px solid #1f355e;
+                border-radius: 12px;
+                backdrop-filter: blur(10px);
+                position: relative;
+                z-index: 1;
+                text-align: left;
+             }
+
+             .history-section h2{
+                font-size: 22px;
+                color: #4da6ff;
+                margin-bottom: 15px;
+             }
+
+             .history-section p{
+                font-size: 14px;
+                color: #cfd8dc;
+                line-height: 1.6;
+                margin-bottom: 15px;
+             }
+
+            /* Canlı kartlarının duracağı ana alan */
+            .card-container {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                margin-top: 40px;
+            }
+
+            /* Tek bir canlının kart tasarımı */
+            .creature-card {
+                background-color: #152238;
+                border: 1px solid #1f355e;
+                border-radius: 10px;
+                width: 250px;
+                padding: 20px;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            /* Fareyle kartın üzerine gelindiğinde (hover efekti) */
+            .creature-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0, 255, 255, 0.2);
+            }
+
+            .creature-card h2 {
+                font-size: 18px;
+                color: #4da6ff;
+            }
+
+            /* Detay metni başlangıçta gizli ve animasyona hazır */
+            .details {
+                max-height: 0;
+                overflow: hidden;
+                opacity: 0;
+                transition: max-height 0.4s ease, opacity 0.4s ease;
+                font-size: 14px;
+                color: #b0c4de;
+                text-align: left;
+                border-top: 1px solid transparent;
+                padding-top: 0;
+            }
+
+            /* Kartın üzerine gelindiğinde içindeki detay metnini akıcı şekilde aç */
+            .creature-card:hover .details {
+                max-height: 150px;
+                opacity: 1;
+                border-top: 1px solid #1f355e;
+                padding-top: 10px;
+                margin-top: 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="hero-section">
+            <h1>MARİANA ÇUKURU</h1>
+            <p>Dünyanın en karanlık ve gizemli derinliklerine yolculuk.</p>
+        </div>
+
+        <div class="history-section">
+            <h2>Çukurun Tarihçesi</h2>
+            <p>Okyanusun en gizemli ve en derin noktası olan Mariana Çukuru, Pasifik Okyanusu'nda, Guam adasının doğusunda yer alır. Deniz seviyesinin yaklaşık 11.000 metre altındaki bu devasa çukur, Dünya'nın kabuğundaki en uç nokta olarak bilinir.</p>
+            <p>Çukurun varlığı ilk kez 1875 yılında İngiliz kraliyet donanmasına ait <strong>HMS Challenger</strong> keşif gemisi tarafından yapılan sondaj çalışmalarıyla tespit edilmiştir. Bu yüzden çukurun en derin noktasına <em>"Challenger Çöküntüsü"</em> adı verilmiştir.</p>
+            <p>Yıllar boyunca tamamen karanlık ve ulaşılamaz olarak görülen bu derinliklere ilk insanlı dalış, 23 Ocak 1960 tarihinde Jacques Piccard ve Don Walsh tarafından <em>Trieste</em> batiskafı ile gerçekleştirilmiştir. Daha sonra 2012 yılında ünlü film yönetmeni James Cameron da <em>Deepsea Challenger</em> ile bu karanlık sulara tek başına dalış yaparak tarihe geçmiştir. Bugün bile burası, uzayın derinliklerinden çok daha az bilinen sırları barındırmaya devam etmektedir.</p>
+        </div>
+        <h1>Mariana Çukuru'nun Gizemleri</h1>
+        <p>Canlılar</p>
+        
+        <!-- Canlı kartı alanı -->
+        <div class="card-container">
+            <!-- Fener balığı kartı (Artık onclick ve script'e gerek kalmadı!) -->
+            <div class="creature-card">
+                <h2>Fener Balığı</h2>
+                <p>Karanlıkta kendi ışığını üreten avcı.</p>
+                <div class="details">
+                    1000 metre ve daha derinlerde yaşayan bu canlı, başındaki ışıltılı uzantıyla avlarını kendine çeker.
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
